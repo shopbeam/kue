@@ -237,9 +237,9 @@ jobs.process('slideshow pdf', 5, function(job, done){
 });
 ```
 
-### Ressource Limitations
+### Resource Limitations
 
-  Often jobs need different resources and a good job queue tries not to overload different resources while keeping the workers busy. Often ressources depend on data provided by the job itself. Therefore kue allows you to have flexible ressource limitations. Usage defaults to 1.
+  Often jobs need different resources and a good job queue tries not to overload different resources while keeping the workers busy. Often resources depend on data provided by the job itself. Therefore kue allows you to have flexible resource limitations. Usage defaults to 1.
 
   Resources use a hirarchy to find an apropriate limit. a.b.c will test limits for [a:b:c, a:b:__default__, a:b, a:__default__, __default__], first match wins.
 
@@ -266,7 +266,7 @@ jobs.process('slideshow pdf', 5, function(job, done){
 ```
 ### Setting limits
 
-  You can set limits for any ressource.
+  You can set limits for any resource.
 
 ```js
 jobs.setLimit({"a:b:c":23, "a:__default__":42});
@@ -275,7 +275,7 @@ jobs.clearLimit(["a:b", "x:p"]);
 ```
 
 
-### Problems with ressource limitations
+### Problems with resource limitations
 
   Resources allocated by a job are freed when the job calls `done()`. The worker tries to free all resources of current running jobs when he detects a exit/SIGINT, but this may fail and resources are still allocated for dead jobs.
   If can clear resource allocations by hand if you find dead limits there.
